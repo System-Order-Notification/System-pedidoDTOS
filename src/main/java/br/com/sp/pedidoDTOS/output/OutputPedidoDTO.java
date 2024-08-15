@@ -1,7 +1,11 @@
 package br.com.sp.pedidoDTOS.output;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import br.com.sp.UsuarioDTOS.output.OutputUsuarioDTO;
 import br.com.sp.pedidoDTOS.auxiliary.MetodoPagamento;
@@ -9,6 +13,7 @@ import br.com.sp.pedidoDTOS.auxiliary.MetodoPagamento;
 public class OutputPedidoDTO {
 	private UUID id;
 	private OutputUsuarioDTO usuario;
+	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
 	private LocalDateTime dataHora;
 	private String descricao;
 	private Float valorTotal;
@@ -16,6 +21,7 @@ public class OutputPedidoDTO {
 	private Float valorTotalGeral;
 	private MetodoPagamento metodoPagamento;
 	private Boolean actived;
+	private List<OutputPedidoItensDTO> itens = new ArrayList<>();
 	
 	public OutputPedidoDTO() {
 		// TODO Auto-generated constructor stub
@@ -105,4 +111,13 @@ public class OutputPedidoDTO {
 	public void setActived(Boolean actived) {
 		this.actived = actived;
 	}
+
+	public List<OutputPedidoItensDTO> getItens() {
+		return itens;
+	}
+
+	public void setItens(List<OutputPedidoItensDTO> itens) {
+		this.itens = itens;
+	}
+	
 }
